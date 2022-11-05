@@ -1,43 +1,87 @@
 # queue_array_py
 
 ````
+ # Python3 program to implement
+# a queue using an array
+
+
 class Queue:
-    def __init__(self, c):
-        self.queue = [] #array
-        self.front = self.rear = 0 # 2 variables to track front and rear
-        self.capacity = c
-        self.size  = 0
 
-    def enqueue(self, data):
-        if self.capacity == self.size:
-            print("\n Queue is full")
-        else:
-            self.queue.append(data)
-            self.rear += 1
-            self.size += 1
+	# To initialize the object.
+	def __init__(self, c):
 
-    def dequeue(self):
-        if self.size == 0:
-            print("\nQueue is empty")
-        else:
-            x = self.queue.pop(0)
-            self.rear -= 1
-            self.size -= 1
-    def print_queue(self):
-        if self.size == 0:
-            print("Queue is empty")
-        for item in self.queue:
-            print(item, "<--", end='')
+		self.queue = []  # array
+		self.front = self.rear = 0  
+		self.capacity = c
+        self.size = 0 # no need in this case
+
+	# Function to insert an element
+	# at the rear of the queue
+	def queueEnqueue(self, data):
+
+		# Check queue is full or not
+		if(self.capacity == self.rear):
+			print("\nQueue is full")
+
+		# Insert element at the rear
+		else:
+			self.queue.append(data)
+			self.rear += 1
+
+	# Function to delete an element
+	# from the front of the queue
+	def queueDequeue(self):
+
+		# If queue is empty
+		if(self.front == self.rear):
+			print("Queue is empty")
+
+		# Pop the front element from list
+		else:
+			x = self.queue.pop(0)
+			self.rear -= 1
+
+	# Function to print queue elements
+	def queueDisplay(self):
+
+		if(self.front == self.rear):
+			print("\nQueue is Empty")
+
+		# Traverse front to rear to
+		# print elements
+		for i in self.queue:
+			print(i, "<--", end='')
+
+	# Print front of queue
+	def queueFront(self):
+
+		if(self.front == self.rear):
+			print("\nQueue is Empty")
+
+		print("\nFront Element is:",
+			self.queue[self.front])
 
 
-q  = Queue(4)
-q.enqueue(2)
-q.enqueue(4)
-q.enqueue(6)
-q.enqueue(8)
-q.dequeue()
-q.dequeue()
-q.print_queue()
+# Driver code
+if __name__ == '__main__':
+
+	# Create a new queue of
+	# capacity 4
+	q = Queue(4)
+
+	# Print queue elements
+	q.queueDisplay()
+
+	# Inserting elements in the queue
+	q.queueEnqueue(20)
+	q.queueEnqueue(30)
+	q.queueEnqueue(40)
+	q.queueEnqueue(50)
+
+	 
+
+# This code is contributed by Amit Mangal
+
 
 
 ````
