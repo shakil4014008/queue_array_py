@@ -1,6 +1,6 @@
 # queue_array_py
 
-````
+````py
  # Python3 program to implement
 # a queue using an array
 
