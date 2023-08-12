@@ -1,4 +1,4 @@
-# Circular Queue using Array pointer (not deque)
+# Circular Dynamic Queue using Array pointer (not deque)
 
 ````py
 
@@ -32,7 +32,7 @@ class Queue:
 			if self.size == 0:
 				self.Front = self.Rear = None
 			else:
-				self.Rear = self.size
+				self.Rear = self.size - 1
 
 	# Function to print queue elements
 	def queueDisplay(self)
@@ -57,6 +57,14 @@ class Queue:
 
 	def size(self):
 		return self.size
+
+	def is_empty(self):
+		return self.size <= 0
+
+	def resize(self):
+		newQueue = list(self.queue)
+		self.capacity = 2 * self.capacity
+		self.queue = newQueue
 
 # Driver code
 if __name__ == '__main__':
