@@ -1,66 +1,62 @@
-# queue_array_py
+# Circular Queue using Array pointer (not deque)
 
 ````py
- # Python3 program to implement
-# a queue using an array
 
 
 class Queue:
-
 	# To initialize the object.
 	def __init__(self, c):
-
 		self.queue = []  # array
 		self.front = self.rear = 0  
-		self.capacity = c
-        self.size = 0 # no need in this case
-
-	# Function to insert an element
-	# at the rear of the queue
+		self.capacity = c #must
+        	self.size = 0
+ 
 	def queueEnqueue(self, data):
-
-		# Check queue is full or not
-		if(self.capacity == self.rear):
+		if(self.capacity == self.size):
 			print("\nQueue is full")
-
-		# Insert element at the rear
 		else:
 			self.queue.append(data)
-			self.rear += 1
-
-	# Function to delete an element
-	# from the front of the queue
-	def queueDequeue(self):
-
-		# If queue is empty
-		if(self.front == self.rear):
-			print("Queue is empty")
-
-		# Pop the front element from list
+		if self.Front is None:
+			self.Front = self.Rear = 0	
 		else:
-			x = self.queue.pop(0)
-			self.rear -= 1
+			self.Rear = self.Size # where size will increase	
+		self.size += 1
+
+	def queueDequeue(self):
+		 if self.size <= 0:
+			print("udnerflow")
+			return 0 #
+		else:
+			self.queue.pop(0)
+			self.size -= 1
+			if self.size == 0:
+				self.Front = self.Rear = None
+			else:
+				self.Rear = self.size
 
 	# Function to print queue elements
-	def queueDisplay(self):
-
+	def queueDisplay(self)
 		if(self.front == self.rear):
 			print("\nQueue is Empty")
-
 		# Traverse front to rear to
 		# print elements
 		for i in self.queue:
 			print(i, "<--", end='')
 
-	# Print front of queue
+	def queueRear(self):
+		if self.Rear is None:
+			print("queue is empty")
+			raise IndexError
+		return self.queue[self.Rear]
+	
 	def queueFront(self):
-
-		if(self.front == self.rear):
+		if(self.front == self.rear or self.Rear is None:
 			print("\nQueue is Empty")
+			raise IndexError
+		print(self.queue[self.front])
 
-		print("\nFront Element is:",
-			self.queue[self.front])
-
+	def size(self):
+		return self.size
 
 # Driver code
 if __name__ == '__main__':
